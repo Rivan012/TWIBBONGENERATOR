@@ -1,54 +1,134 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    padding: 20px;
-    text-align: center;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #0d0d0d;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* Snapshot flash */
+#flash {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
 }
 
 .container {
-    width: 420px;   /* container tetap nyaman */
-    margin: auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 14px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-}
-
-.canvas-container {
-    width: 100%;
-    height: 520px;  /* mengikuti rasio 4:5 */
-    background: #ccc;
-    margin-top: 20px;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-canvas {
     width: 100%;
     height: 100%;
-    cursor: grab;
+    padding: 12px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
-canvas:active {
-    cursor: grabbing;
+/* Judul */
+.title {
+    font-size: 22px;
+    margin-bottom: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
-.controls {
-    margin-top: 20px;
-}
-
-#downloadBtn {
-    margin-top: 20px;
-    padding: 10px 15px;
+/* Tombol Upload */
+.upload-btn {
     background: #6c63ff;
-    color: white;
-    border: none;
+    padding: 10px 18px;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.upload-btn input {
+    display:none;
 }
 
-#downloadBtn:hover {
-    background: #574de0;
+/* Loader shimmer */
+.loader {
+    width: 90%;
+    height: 10px;
+    border-radius: 6px;
+    margin: 10px 0;
+    background: linear-gradient(90deg, #333 25%, #555 50%, #333 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite;
+}
+.hidden { display:none; }
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Canvas Container — 4:5 FIX */
+.canvas-container {
+    width: 100%;
+    aspect-ratio: 4 / 5; 
+    overflow: hidden;
+    border-radius: 14px;
+    background:#222;
+    box-shadow: 0 0 18px rgba(255,255,255,0.1);
+}
+
+/* CANVAS GA GEPENG */
+canvas {
+    width: 100%;
+    height: auto;   /* ANTI GEPENG */
+    display: block;
+    touch-action: none;
+}
+
+/* Kontrol Zoom */
+.zoom-buttons {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width: 90%;
+    margin-top:10px;
+}
+
+.zoom-buttons button {
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+    border-radius: 10px;
+    border:none;
+    background:#333;
+    color:#fff;
+    cursor:pointer;
+}
+
+.zoom-buttons button:active {
+    background:#444;
+}
+
+.zoom-buttons input[type="range"] {
+    flex-grow:1;
+}
+
+/* Download */
+.download-btn {
+    background:#6c63ff;
+    padding: 12px 20px;
+    width: 90%;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    color:white;
+    margin-top:10px;
+    cursor:pointer;
 }
