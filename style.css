@@ -1,20 +1,12 @@
-<<<<<<< HEAD
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-=======
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
->>>>>>> e4cdc111197dffaa47fc187d5d082e72951fed10
 }
 
 html, body {
     width: 100%;
     height: 100%;
-<<<<<<< HEAD
     background: #0d0d0d;
     font-family: 'Inter', sans-serif;
     overflow: hidden;
@@ -32,16 +24,9 @@ html, body {
     left: 0;
     pointer-events: none;
     transition: opacity 0.3s;
-=======
-    background: #111;
-    overflow: hidden; /* biar fullscreen no scroll */
-    font-family: Arial, sans-serif;
->>>>>>> e4cdc111197dffaa47fc187d5d082e72951fed10
 }
 
-/* Container utama */
 .container {
-<<<<<<< HEAD
     width: 100%;
     height: 100%;
     padding: 12px;
@@ -146,57 +131,4 @@ canvas {
     color:white;
     margin-top:10px;
     cursor:pointer;
-=======
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Canvas fullscreen fit lebar hp */
-.canvas-container {
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 4 / 5;  /* BIKIN CANVAS 4:5 DI HP */
-    background: #333;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-canvas {
-    width: 100%;
-    height: 100%;
-    touch-action: none; /* wajib biar drag smooth di HP */
-}
-
-.controls {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    text-align: center;
-    color: white;
-}
-
-input[type="range"] {
-    width: 80%;
-}
-
-#upload {
-    margin-top: 10px;
-    color: white;
-}
-
-#downloadBtn {
-    margin-top: 10px;
-    padding: 12px 20px;
-    background: #6c63ff;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 80%;
-    font-size: 16px;
->>>>>>> e4cdc111197dffaa47fc187d5d082e72951fed10
 }
