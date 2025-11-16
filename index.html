@@ -1,31 +1,16 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <title>Twibbon 4:5 Editor</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
 <div class="container">
-    <h2>TWIBBON MOSTANEER FAIR 15</h2>
 
     <input type="file" id="upload" accept="image/*">
 
-    <div class="editor">
-        <div class="canvas-container">
-            <canvas id="canvas"></canvas>
-        </div>
+    <div class="canvas-container">
+        <canvas id="canvas"></canvas>
     </div>
 
     <div class="controls">
-        <label>Zoom:</label>
-        <input type="range" id="zoom" min="0.5" max="3" step="0.01" value="0">
+        <label style="color:white;">Zoom:</label>
+        <input type="range" id="zoom" min="0.5" max="3" step="0.01" value="1">
     </div>
 
-    <button id="downloadBtn">Download Hasil</button>
-</div>
+    <button id="downloadBtn">Download Twibbon</button>
 
-<script src="script.js"></script>
-</body>
-</html>
+</div>
