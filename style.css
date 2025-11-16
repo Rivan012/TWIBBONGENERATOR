@@ -1,25 +1,33 @@
-body {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: #111;
+    overflow: hidden; /* biar fullscreen no scroll */
     font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    padding: 20px;
-    text-align: center;
 }
 
+/* Container utama */
 .container {
-    width: 420px;   /* container tetap nyaman */
-    margin: auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 14px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Canvas fullscreen fit lebar hp */
 .canvas-container {
     width: 100%;
-    height: 520px;  /* mengikuti rasio 4:5 */
-    background: #ccc;
-    margin-top: 20px;
-    position: relative;
+    max-width: 100%;
+    aspect-ratio: 4 / 5;  /* BIKIN CANVAS 4:5 DI HP */
+    background: #333;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -27,28 +35,34 @@ body {
 canvas {
     width: 100%;
     height: 100%;
-    cursor: grab;
-}
-
-canvas:active {
-    cursor: grabbing;
+    touch-action: none; /* wajib biar drag smooth di HP */
 }
 
 .controls {
-    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+}
+
+input[type="range"] {
+    width: 80%;
+}
+
+#upload {
+    margin-top: 10px;
+    color: white;
 }
 
 #downloadBtn {
-    margin-top: 20px;
-    padding: 10px 15px;
+    margin-top: 10px;
+    padding: 12px 20px;
     background: #6c63ff;
-    color: white;
     border: none;
+    color: white;
     border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
-}
-
-#downloadBtn:hover {
-    background: #574de0;
+    width: 80%;
+    font-size: 16px;
 }
