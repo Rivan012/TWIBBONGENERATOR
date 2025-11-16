@@ -11,10 +11,16 @@ const flash = document.getElementById("flash");
 let img = new Image();
 let frame = new Image();
 
+<<<<<<< HEAD
 // GANTI DENGAN TWIBBON RASIO 4:5
 frame.src = "twibbon.png";
 
 /* CANVAS WAJIB 4:5 */
+=======
+// Ganti twibbon 4:5 kamu di sini
+frame.src = "twibbon.png";  
+
+>>>>>>> e4cdc111197dffaa47fc187d5d082e72951fed10
 canvas.width = 800;
 canvas.height = 1000;
 
@@ -23,6 +29,7 @@ let isDragging = false;
 let dragStart = { x: 0, y: 0 };
 let scale = 1;
 
+<<<<<<< HEAD
 // UPLOAD
 upload.addEventListener("change", e => {
     loader.classList.remove("hidden");
@@ -65,12 +72,40 @@ zoomOutBtn.onclick = () => {
 
 // DRAG MOUSE
 canvas.addEventListener("mousedown", e => {
+=======
+// =======================================
+// UPLOAD FOTO
+// =======================================
+upload.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    img = new Image();
+    img.onload = draw;
+    img.src = URL.createObjectURL(file);
+});
+
+// =======================================
+// ZOOM SLIDER
+// =======================================
+zoom.addEventListener("input", () => {
+    scale = zoom.value;
+    draw();
+});
+
+// =======================================
+// DRAG — PC (mouse)
+// =======================================
+canvas.addEventListener("mousedown", (e) => {
+>>>>>>> e4cdc111197dffaa47fc187d5d082e72951fed10
     isDragging = true;
     dragStart.x = e.offsetX - pos.x;
     dragStart.y = e.offsetY - pos.y;
 });
 
+<<<<<<< HEAD
 canvas.addEventListener("mousemove", e => {
+=======
+canvas.addEventListener("mousemove", (e) => {
+>>>>>>> e4cdc111197dffaa47fc187d5d082e72951fed10
     if (!isDragging) return;
     pos.x = e.offsetX - dragStart.x;
     pos.y = e.offsetY - dragStart.y;
@@ -78,6 +113,7 @@ canvas.addEventListener("mousemove", e => {
 });
 canvas.addEventListener("mouseup", () => isDragging = false);
 
+<<<<<<< HEAD
 // DRAG TOUCH
 canvas.addEventListener("touchstart", e => {
     let t = e.touches[0];
@@ -101,6 +137,41 @@ canvas.addEventListener("touchmove", e => {
 canvas.addEventListener("touchend", () => isDragging = false);
 
 // DRAW
+=======
+canvas.addEventListener("mouseup", () => (isDragging = false));
+canvas.addEventListener("mouseleave", () => (isDragging = false));
+
+// =======================================
+// DRAG — HP (TOUCH EVENTS)
+// =======================================
+canvas.addEventListener("touchstart", function (e) {
+    e.preventDefault();
+    let touch = e.touches[0];
+    isDragging = true;
+    dragStart.x = touch.clientX - canvas.getBoundingClientRect().left - pos.x;
+    dragStart.y = touch.clientY - canvas.getBoundingClientRect().top - pos.y;
+});
+
+canvas.addEventListener("touchmove", function (e) {
+    if (!isDragging) return;
+    e.preventDefault();
+
+    let touch = e.touches[0];
+    let x = touch.clientX - canvas.getBoundingClientRect().left;
+    let y = touch.clientY - canvas.getBoundingClientRect().top;
+
+    pos.x = x - dragStart.x;
+    pos.y = y - dragStart.y;
+
+    draw();
+});
+
+canvas.addEventListener("touchend", () => (isDragging = false));
+
+// =======================================
+// RENDER FOTO + FRAME
+// =======================================
+>>>>>>> e4cdc111197dffaa47fc187d5d082e72951fed10
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -115,6 +186,7 @@ function draw() {
     ctx.drawImage(frame, 0, 0, canvas.width, canvas.height);
 }
 
+<<<<<<< HEAD
 // DOWNLOAD
 downloadBtn.addEventListener("click", () => {
     snapshotFlash();
@@ -124,4 +196,14 @@ downloadBtn.addEventListener("click", () => {
         a.download = "twibbon-fix-4x5.png";
         a.click();
     }, 200);
+=======
+// =======================================
+// DOWNLOAD
+// =======================================
+downloadBtn.addEventListener("click", () => {
+    const link = document.createElement("a");
+    link.download = "twibbon-4x5.png";
+    link.href = canvas.toDataURL();
+    link.click();
+>>>>>>> e4cdc111197dffaa47fc187d5d082e72951fed10
 });
