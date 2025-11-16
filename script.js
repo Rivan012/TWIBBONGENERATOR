@@ -7,10 +7,9 @@ const downloadBtn = document.getElementById("downloadBtn");
 let img = new Image();
 let frame = new Image();
 
-// GANTI FILE FRAME TWIBBON 4:5 KAMU DI SINI!
+// Ganti twibbon 4:5 kamu di sini
 frame.src = "twibbon.png";  
 
-// Set rasio 4:5 → 800x1000
 canvas.width = 800;
 canvas.height = 1000;
 
@@ -19,7 +18,9 @@ let isDragging = false;
 let dragStart = { x: 0, y: 0 };
 let scale = 1;
 
-// Upload gambar
+// =======================================
+// UPLOAD FOTO
+// =======================================
 upload.addEventListener("change", (e) => {
     const file = e.target.files[0];
     img = new Image();
@@ -27,21 +28,22 @@ upload.addEventListener("change", (e) => {
     img.src = URL.createObjectURL(file);
 });
 
-// Zoom
+// =======================================
+// ZOOM SLIDER
+// =======================================
 zoom.addEventListener("input", () => {
     scale = zoom.value;
     draw();
 });
 
-// Drag / geser gambar
+// =======================================
+// DRAG — PC (mouse)
+// =======================================
 canvas.addEventListener("mousedown", (e) => {
     isDragging = true;
     dragStart.x = e.offsetX - pos.x;
     dragStart.y = e.offsetY - pos.y;
 });
-
-canvas.addEventListener("mouseup", () => isDragging = false);
-canvas.addEventListener("mouseout", () => isDragging = false);
 
 canvas.addEventListener("mousemove", (e) => {
     if (!isDragging) return;
@@ -50,7 +52,39 @@ canvas.addEventListener("mousemove", (e) => {
     draw();
 });
 
-// Render foto + frame
+canvas.addEventListener("mouseup", () => (isDragging = false));
+canvas.addEventListener("mouseleave", () => (isDragging = false));
+
+// =======================================
+// DRAG — HP (TOUCH EVENTS)
+// =======================================
+canvas.addEventListener("touchstart", function (e) {
+    e.preventDefault();
+    let touch = e.touches[0];
+    isDragging = true;
+    dragStart.x = touch.clientX - canvas.getBoundingClientRect().left - pos.x;
+    dragStart.y = touch.clientY - canvas.getBoundingClientRect().top - pos.y;
+});
+
+canvas.addEventListener("touchmove", function (e) {
+    if (!isDragging) return;
+    e.preventDefault();
+
+    let touch = e.touches[0];
+    let x = touch.clientX - canvas.getBoundingClientRect().left;
+    let y = touch.clientY - canvas.getBoundingClientRect().top;
+
+    pos.x = x - dragStart.x;
+    pos.y = y - dragStart.y;
+
+    draw();
+});
+
+canvas.addEventListener("touchend", () => (isDragging = false));
+
+// =======================================
+// RENDER FOTO + FRAME
+// =======================================
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -62,14 +96,15 @@ function draw() {
         ctx.restore();
     }
 
-    // Render twibbon frame 4:5
     ctx.drawImage(frame, 0, 0, canvas.width, canvas.height);
 }
 
-// Download hasil
+// =======================================
+// DOWNLOAD
+// =======================================
 downloadBtn.addEventListener("click", () => {
     const link = document.createElement("a");
     link.download = "twibbon-4x5.png";
-    link.href = canvas.toDataURL("image/png");
+    link.href = canvas.toDataURL();
     link.click();
 });
