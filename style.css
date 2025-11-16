@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    padding: 20px;
+    text-align: center;
+}
+
+.container {
+    width: 420px;   /* container tetap nyaman */
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.canvas-container {
+    width: 100%;
+    height: 520px;  /* mengikuti rasio 4:5 */
+    background: #ccc;
+    margin-top: 20px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+}
+
+canvas:active {
+    cursor: grabbing;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+#downloadBtn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#downloadBtn:hover {
+    background: #574de0;
+}
